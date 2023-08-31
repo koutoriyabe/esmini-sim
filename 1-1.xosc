@@ -14,7 +14,7 @@
       <ParameterDeclaration name="PedestrianSpeed" parameterType="double" value="50"/><!--歩行者の速度　初期は1.5-->
 
       <ParameterDeclaration name="P_Sx" parameterType="double" value="30"/><!-- 歩行者のxの初期位置　初期は15 -->
-      <ParameterDeclaration name="Dy" parameterType="double" value="10"/><!-- 歩行者のDy　初期は0.5 -->
+      <ParameterDeclaration name="Dy" parameterType="double" value="15"/><!-- 歩行者のDy　初期は0.5 -->
       <ParameterDeclaration name="B'" parameterType="double" value="-$Dy-1.8"/><!-- 歩行者の横の最終位置　-2はw-->
 
       <ParameterDeclaration name="E_Sx" parameterType="double" value="0"/><!-- Egoのxの初期位置 -->
