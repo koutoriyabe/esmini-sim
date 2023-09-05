@@ -3,10 +3,10 @@
 <OpenSCENARIO>
     <FileHeader revMajor="1" revMinor="1" date="2022-11-15T10:00:00" description="Demonstrate ALKS controller" author="esmini-team"/>
     <ParameterDeclarations>
-        <ParameterDeclaration name="v0" parameterType="double" value="16"/>
+        <ParameterDeclaration name="EgoSpeed" parameterType="double" value="16"/>
         <ParameterDeclaration name="EgoS" parameterType="double" value="32"/>
-        <ParameterDeclaration name="vp" parameterType="double" value="1.0"/>
-        <ParameterDeclaration name="PedestrianS" parameterType="double" value="200"/>
+        <ParameterDeclaration name="PedestrianSpeed" parameterType="double" value="1.0"/>
+        <ParameterDeclaration name="PedestrianS" parameterType="double" value="110"/>
     </ParameterDeclarations>
     <CatalogLocations>
         <VehicleCatalog>
@@ -61,7 +61,7 @@
                             <SpeedAction>
                                 <SpeedActionDynamics dynamicsShape="step" dynamicsDimension="time" value="0.0"/>
                                 <SpeedActionTarget>
-                                    <AbsoluteTargetSpeed value="$v0"/>
+                                    <AbsoluteTargetSpeed value="$EgoSpeed"/>
                                 </SpeedActionTarget>
                             </SpeedAction>
                         </LongitudinalAction>
@@ -141,7 +141,7 @@
                                         <SpeedAction>
                                             <SpeedActionDynamics dynamicsShape="step" dynamicsDimension="time" value="0.0"/>
                                             <SpeedActionTarget>
-                                                <AbsoluteTargetSpeed value="$vp"/>
+                                                <AbsoluteTargetSpeed value="$PedestrianSpeed"/>
                                             </SpeedActionTarget>
                                         </SpeedAction>
                                     </LongitudinalAction>
