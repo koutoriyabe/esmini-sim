@@ -33,8 +33,8 @@
                         <ParameterAssignment parameterRef="LogLevel" value="2"/>
                         <ParameterAssignment parameterRef="Cruise" value="false"/>
                         <ParameterAssignment parameterRef="CutInPerceptionDelayMode" value="Time"/>
-                        <ParameterAssignment parameterRef="FullStop" value="true"/>
-                        <ParameterAssignment parameterRef="PedestrianRiskEvaluationTime" value="0.4"/>
+                        <!-- <ParameterAssignment parameterRef="FullStop" value="true"/> -->
+                        <!-- <ParameterAssignment parameterRef="PedestrianRiskEvaluationTime" value="0.4"/> -->
                         <ParameterAssignment parameterRef="AlwaysTrigOnScenario" value="true"/>
                         <ParameterAssignment parameterRef="OverlapTolerance" value="0.0"/>
                     </ParameterAssignments>
@@ -146,7 +146,7 @@
             <ParameterDeclarations/>
             <Act name="CutInAndBrakeAct">
                 <ManeuverGroup maximumExecutionCount="1" name="MyManeuverGroup">
-                    <Actors selectTriggeringEntities="false">
+                    <Actors selectTriggeringEntities="true">
                         <EntityRef entityRef="pedestrian_adult"/>
                     </Actors>
 
@@ -175,6 +175,15 @@
                             </StartTrigger>
                         </Event>
                     </Maneuver>
+                </ManeuverGroup>
+                <StartTrigger/>
+                <StopTrigger/>
+
+
+                <ManeuverGroup maximumExecutionCount="1" name="MyManeuverGroup">
+                    <Actors selectTriggeringEntities="true">
+                        <EntityRef entityRef="Ego"/>
+                    </Actors>
 
                     <Maneuver name="brake_Maneuver">
                         <Event name="brake_Event" priority="overwrite">
@@ -190,7 +199,30 @@
                                     </LongitudinalAction>
                                 </PrivateAction>
                             </Action>
+                            
                             <StartTrigger>
+                                
+                                <ConditionGroup>
+                                    <Condition name="ExampleCondition" delay="0" conditionEdge="none">
+                                        <ByValueCondition>
+                                            <SpeedActionDynamics dynamicsShape="linear" value="-1.0" dynamicsDimension="rate"/>
+                                                <SimulationTimeConditionTarget >
+                                                    <EntityRef entityRef="Ego" />
+                                                </SimulationTimeConditionTarget>
+                                        </ByValueCondition>
+                                    </Condition>
+                                </ConditionGroup>
+
+                            </StartTrigger>
+                            
+                        </Event>
+                    </Maneuver>
+                </ManeuverGroup>
+                
+                <StartTrigger/>
+                <StopTrigger/>
+
+                            <!-- <StartTrigger>
                                 <ConditionGroup>
                                     <Condition name="brake_Condition" delay="0" conditionEdge="rising">
                                         <ByEntityCondition>
@@ -211,15 +243,8 @@
                                         </ByEntityCondition>
                                     </Condition>
                                 </ConditionGroup>
-                            </StartTrigger>
-                        </Event>
-                    </Maneuver>
+                            </StartTrigger> -->
 
-
-
-                </ManeuverGroup>
-                <StartTrigger/>
-                <StopTrigger/>
             </Act>
         </Story>
         <StopTrigger>

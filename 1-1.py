@@ -7,5 +7,5 @@ Dy_w = -Dy - 2
 
 
 # XMLファイルを読み込む
-tree = ET.parse("/home/hideakikodama/esmini/resources/tier4/1-1.xosc")
+tree = ET.parse("/home/hideakikodama/esmini/resources/tier4/1-2.xosc")
 root = tree.getroot()
